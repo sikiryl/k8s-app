@@ -20,7 +20,11 @@ spec:
       containers:
       - image: nginx:alpine
         name: cart
-        envFrom:
-        - configMapRef:
-            name: cart
+        volumeMounts:
+        - mountPath: /usr/share/nginx/html
+          name: index
+      volumes:
+      - name: index
+        configMap:
+          name: cart
 status: {}
